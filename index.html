@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>James Cook Camper</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
+    header { background-color: #2c3e50; color: white; padding: 20px; text-align: center; }
+    .container { padding: 20px; max-width: 900px; margin: auto; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .gallery img { width: calc(33% - 10px); height: auto; border-radius: 8px; }
+    @media (max-width: 600px) {
+      .gallery img { width: 100%; }
+    }
+    .section { margin-top: 30px; }
+    h2 { color: #2c3e50; }
+    form { display: flex; flex-direction: column; gap: 15px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    input, textarea { padding: 10px; font-size: 1em; border: 1px solid #ccc; border-radius: 6px; }
+    button { padding: 12px; font-size: 1em; background-color: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background-color: #219150; }
+    footer { text-align: center; padding: 20px; font-size: 0.9em; color: #999; }
+    nav { text-align: center; margin-bottom: 20px; }
+    nav button { margin: 0 5px; padding: 8px 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="title">James Cook Camper Rental in Salou, Spain</h1>
+    <p id="subtitle">Travel freely through Spain</p>
+    
+  </header>
+
+  <nav>
+    <button onclick="updateLanguage('es')">Español</button>
+    <button onclick="updateLanguage('en')">English</button>
+    <button onclick="updateLanguage('fr')">Français</button>
+    <button onclick="updateLanguage('pl')">Polski</button>
+    <button onclick="updateLanguage('uk')">Українська</button>
+  </nav>
+
+  <div class="container">
+
+    <section class="section">
+      <h2 id="galleryTitle">Photo gallery</h2>
+      <div class="gallery">
+        <img src="pict\merc.jpg" alt="Photo 1" />
+        <img src="pict\cockpit.jpg" alt="Photo 2" />
+        <img src="pict\salon.jpg" alt="Photo 3" />
+        <img src="pict\sofaup.jpg" alt="Photo 4" />
+        <img src="pict\sofadown.jpg" alt="Photo 5" />
+        <img src="pict\kitchen.jpg" alt="Photo 6" />
+        <img src="pict\refr.jpg" alt="Photo 7" />
+        <img src="pict\shower.jpg" alt="Photo 8" />
+        <img src="pict\scheme.jpg" alt="Photo 9" />
+        <img src="pict\size.jpg" alt="Photo 10" />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 id="carTitle">Mercedes Benz James Cook Westfalia 2006</h2>
+      <ul id="carDescription">
+        <li>5 seats for travel, up to 5 sleeping places</li>
+        <li>Kitchen, shower, toilet, autonomous power supply</li>
+        <li>Manual gearbox, diesel, economical</li>
+        <li>Ideal for traveling around Spain</li>
+      </ul>
+
+      <h2 id="rentalTermsTitle">Rental terms:</h2>
+      <ul id="rentalTerms">
+        <li>Minimum rental period — 3 days</li>
+        <li>300 km/day included, then 0.25 €/km</li>
+        <li>Deposit: 800 €</li>
+        <li>Driver: from 25 years + minimum 2 years experience</li>
+        <li>Additional options: child seat, bike rack, picnic set</li>
+      </ul>
+
+      <h2 id="pricesTitle">Prices:</h2>
+      <ul id="prices">
+        <li>August: 140 €/day</li>
+        <li>September-October: 120 €/day</li>
+        <li>Other months: 100 €/day</li>
+        <li>Discounts from 7 days</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 id="formTitle">Leave a request</h2>
+      <form action="mailto:tersprin@gmail.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <input type="text" name="dates" placeholder="Desired rental dates" required />
+        <input type="text" name="route" placeholder="Your planned route" required />
+        <input type="text" name="people" placeholder="How many people will travel?" required />
+        <input type="text" name="experience" placeholder="Your camper experience" required />
+        <textarea name="comments" placeholder="Additional information or questions. Which extra options interest you?" rows="4"></textarea>
+        <button type="submit" id="submitBtn">Send</button>
+      </form>
+    </section>
+
+  </div>
+
+  <footer>© 2025 CaravanRent. All rights reserved.
+<h5 >This page is intended to collect applications and preliminary interest. The actual rental will be available after passing the technical inspection of the camper and signing the contract. The images are presented as examples of the model.</h5>
+</footer>
+
+<script>
+  const translations = {
+    es: {
+      title: "Alquiler de camper James Cook en Salou, España",
+      subtitle: "Viaja libremente por España",
+      galleryTitle: "Galería de fotos",
+      carTitle: "Mercedes Benz James Cook Westfalia 2006",
+      carDescription: [
+        "5 asientos para viajar, hasta 5 plazas para dormir",
+        "Cocina, ducha, baño, alimentación autónoma",
+        "Caja de cambios manual, diésel, económico",
+        "Ideal para viajar por España"
+      ],
+      rentalTermsTitle: "Condiciones de alquiler:",
+      rentalTerms: [
+        "Duración mínima — 3 días",
+        "300 km/día incluidos, luego 0,25 €/km",
+        "Depósito: 800 €",
+        "Conductor: desde 25 años + mínimo 2 años de experiencia",
+        "Opciones adicionales: silla para niños, portabicicletas, set de picnic"
+      ],
+      pricesTitle: "Precios:",
+      prices: [
+        "Agosto: 140 €/día",
+        "Septiembre-Octubre: 120 €/día",
+        "Otros meses: 100 €/día",
+        "Descuentos desde 7 días"
+      ],
+      formTitle: "Deja una solicitud",
+      namePlaceholder: "Tu nombre",
+      emailPlaceholder: "Tu email",
+      datesPlaceholder: "Fechas deseadas de alquiler",
+      routePlaceholder: "Tu ruta prevista",
+      peoplePlaceholder: "¿Cuántas personas viajarán?",
+      experiencePlaceholder: "Tu experiencia con campers",
+      commentsPlaceholder: "Información adicional o preguntas. ¿Qué opciones extra te interesan?",
+      submitBtn: "Enviar"
+    },
+    en: {
+      title: "James Cook Camper Rental in Salou, Spain",
+      subtitle: "Travel freely through Spain",
+      galleryTitle: "Photo gallery",
+      carTitle: "Mercedes Benz James Cook Westfalia 2006",
+      carDescription: [
+        "5 seats for travel, up to 5 sleeping places",
+        "Kitchen, shower, toilet, autonomous power supply",
+        "Manual gearbox, diesel, economical",
+        "Ideal for traveling around Spain"
+      ],
+      rentalTermsTitle: "Rental terms:",
+      rentalTerms: [
+        "Minimum rental period — 3 days",
+        "300 km/day included, then 0.25 €/km",
+        "Deposit: 800 €",
+        "Driver: from 25 years + minimum 2 years experience",
+        "Additional options: child seat, bike rack, picnic set"
+      ],
+      pricesTitle: "Prices:",
+      prices: [
+        "August: 140 €/day",
+        "September-October: 120 €/day",
+        "Other months: 100 €/day",
+        "Discounts from 7 days"
+      ],
+      formTitle: "Leave a request",
+      namePlaceholder: "Your name",
+      emailPlaceholder: "Your email",
+      datesPlaceholder: "Desired rental dates",
+      routePlaceholder: "Your planned route",
+      peoplePlaceholder: "How many people will travel?",
+      experiencePlaceholder: "Your camper experience",
+      commentsPlaceholder: "Additional information or questions. Which extra options interest you?",
+      submitBtn: "Send"
+    },
+    fr: {
+      title: "Location de camper James Cook à Salou, Espagne",
+      subtitle: "Voyagez librement en Espagne",
+      galleryTitle: "Galerie de photos",
+      carTitle: "Mercedes Benz James Cook Westfalia 2006",
+      carDescription: [
+        "5 places pour voyager, jusqu’à 5 places pour dormir",
+        "Cuisine, douche, toilette, alimentation autonome",
+        "Boîte manuelle, diesel, économique",
+        "Idéal pour voyager en Espagne"
+      ],
+      rentalTermsTitle: "Conditions de location :",
+            rentalTerms: [
+        "Durée minimale — 3 jours",
+        "300 km/jour inclus, puis 0,25 €/km",
+        "Dépôt : 800 €",
+        "Conducteur : à partir de 25 ans + minimum 2 ans d'expérience",
+        "Options supplémentaires : siège enfant, porte-vélos, kit pique-nique"
+      ],
+      pricesTitle: "Tarifs :",
+      prices: [
+        "Août : 140 €/jour",
+        "Septembre-Octobre : 120 €/jour",
+        "Autres mois : 100 €/jour",
+        "Réductions à partir de 7 jours"
+      ],
+      formTitle: "Laissez une demande",
+      namePlaceholder: "Votre nom",
+      emailPlaceholder: "Votre email",
+      datesPlaceholder: "Dates de location souhaitées",
+      routePlaceholder: "Votre itinéraire prévu",
+      peoplePlaceholder: "Combien de personnes voyageront ?",
+      experiencePlaceholder: "Votre expérience avec les campers",
+      commentsPlaceholder: "Informations ou questions supplémentaires. Quelles options supplémentaires vous intéressent ?",
+      submitBtn: "Envoyer"
+    },
+    pl: {
+      title: "Wynajem kampera James Cook w Salou, Hiszpania",
+      subtitle: "Podróżuj swobodnie po Hiszpanii",
+      galleryTitle: "Galeria zdjęć",
+      carTitle: "Mercedes Benz James Cook Westfalia 2006",
+      carDescription: [
+        "5 miejsc do podróży, do 5 miejsc do spania",
+        "Kuchnia, prysznic, toaleta, autonomiczne zasilanie",
+        "Manualna skrzynia biegów, diesel, ekonomiczny",
+        "Idealny do podróży po Hiszpanii"
+      ],
+      rentalTermsTitle: "Warunki wynajmu:",
+      rentalTerms: [
+        "Minimalny okres wynajmu — 3 dni",
+        "300 km/dzień w cenie, potem 0,25 €/km",
+        "Kaucja: 800 €",
+        "Kierowca: od 25 lat + minimum 2 lata doświadczenia",
+        "Dodatkowe opcje: fotelik dziecięcy, bagażnik na rowery, zestaw piknikowy"
+      ],
+      pricesTitle: "Ceny:",
+      prices: [
+        "Sierpień: 140 €/dzień",
+        "Wrzesień-październik: 120 €/dzień",
+        "Inne miesiące: 100 €/dzień",
+        "Zniżki od 7 dni"
+      ],
+      formTitle: "Zostaw zapytanie",
+      namePlaceholder: "Twoje imię",
+      emailPlaceholder: "Twój email",
+      datesPlaceholder: "Preferowane daty wynajmu",
+      routePlaceholder: "Twoja planowana trasa",
+      peoplePlaceholder: "Ile osób będzie podróżować?",
+      experiencePlaceholder: "Twoje doświadczenie z kamperami",
+      commentsPlaceholder: "Dodatkowe informacje lub pytania. Jakie dodatkowe opcje Cię interesują?",
+      submitBtn: "Wyślij"
+    },
+    uk: {
+      title: "Оренда кемпера James Cook в Салоу, Іспанія",
+      subtitle: "Подорожуйте Іспанією вільно",
+      galleryTitle: "Фотогалерея",
+      carTitle: "Mercedes Benz James Cook Westfalia 2006",
+      carDescription: [
+        "5 місць для подорожі, до 5 місць для сну",
+        "Кухня, душ, туалет, автономне живлення",
+        "Механічна коробка, дизель, економний",
+        "Ідеальний для подорожей по Іспанії"
+      ],
+      rentalTermsTitle: "Умови оренди:",
+      rentalTerms: [
+        "Мінімальний термін — 3 дні",
+        "Пробіг — 300 км/день включено, далі — 0,25 €/км",
+        "Застава: 800 €",
+        "Водій: від 25 років + мінімум 2 роки досвіду",
+        "Додаткові опції: дитяче крісло, велобагажник, набір для пікніку"
+      ],
+      pricesTitle: "Ціни:",
+      prices: [
+        "Серпень: 140 €/доба",
+        "Вересень-жовтень: 120 €/доба",
+        "Інші місяці: 100 €/доба",
+        "Знижки від 7 днів"
+      ],
+      formTitle: "Залишити заявку",
+      namePlaceholder: "Ваше ім’я",
+      emailPlaceholder: "Ваш Email",
+      datesPlaceholder: "Бажані дати оренди",
+      routePlaceholder: "Ваш орієнтовний маршрут",
+      peoplePlaceholder: "Скільки людей подорожуватимуть?",
+      experiencePlaceholder: "Ваш досвід з подорожами в кемпері",
+      commentsPlaceholder: "Додаткова інформація або питання. Які додаткові опції Вас цікавлять?",
+      submitBtn: "Надіслати"
+    }
+  };
+
+  function updateLanguage(lang) {
+    const t = translations[lang];
+    document.getElementById("title").textContent = t.title;
+    document.getElementById("subtitle").textContent = t.subtitle;
+    document.getElementById("galleryTitle").textContent = t.galleryTitle;
+    document.getElementById("carTitle").textContent = t.carTitle;
+
+    // Оновлення списку опису авто
+    const carDescEl = document.getElementById("carDescription");
+    carDescEl.innerHTML = "";
+    t.carDescription.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      carDescEl.appendChild(li);
+    });
+
+    document.getElementById("rentalTermsTitle").textContent = t.rentalTermsTitle;
+    const rentalTermsEl = document.getElementById("rentalTerms");
+    rentalTermsEl.innerHTML = "";
+    t.rentalTerms.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      rentalTermsEl.appendChild(li);
+    });
+
+    document.getElementById("pricesTitle").textContent = t.pricesTitle;
+    const pricesEl = document.getElementById("prices");
+    pricesEl.innerHTML = "";
+    t.prices.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      pricesEl.appendChild(li);
+    });
+
+    document.getElementById("formTitle").textContent = t.formTitle;
+
+    // Оновлення placeholder форми
+    const form = document.querySelector("form");
+    form.elements["name"].placeholder = t.namePlaceholder;
+    form.elements["email"].placeholder = t.emailPlaceholder;
+    form.elements["dates"].placeholder = t.datesPlaceholder;
+    form.elements["route"].placeholder = t.routePlaceholder;
+    form.elements["people"].placeholder = t.peoplePlaceholder;
+    form.elements["experience"].placeholder = t.experiencePlaceholder;
+    form.elements["comments"].placeholder = t.commentsPlaceholder;
+    document.getElementById("submitBtn").textContent = t.submitBtn;
+  }
+</script>
+
