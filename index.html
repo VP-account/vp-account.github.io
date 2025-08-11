@@ -86,18 +86,65 @@
     </section>
 
     <section class="section">
-      <h2 id="formTitle">Leave a request</h2>
-      <form action="mailto:tersprin@gmail.com" method="POST" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
-        <input type="text" name="dates" placeholder="Desired rental dates" required />
-        <input type="text" name="route" placeholder="Your planned route" required />
-        <input type="text" name="people" placeholder="How many people will travel?" required />
-        <input type="text" name="experience" placeholder="Your camper experience" required />
-        <textarea name="comments" placeholder="Additional information or questions. Which extra options interest you?" rows="4"></textarea>
-        <button type="submit" id="submitBtn">Send</button>
-      </form>
-    </section>
+  <h2 id="formTitle">Leave a request</h2>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your name" required />
+    <input type="email" name="email" placeholder="Your email" required />
+    <input type="text" name="dates" placeholder="Desired rental dates" required />
+    <input type="text" name="route" placeholder="Your planned route" required />
+    <input type="text" name="people" placeholder="How many people will travel?" required />
+    <input type="text" name="experience" placeholder="Your camper experience" required />
+    <textarea name="comments" placeholder="Additional information or questions. Which extra options interest you?" rows="4"></textarea>
+    <button type="submit" id="submitBtn">Send</button>
+  </form>
+  
+  <div id="formSuccess" style="display: none; background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 15px;">
+    <p style="color: #2e7d32;">Thank you! Your request has been sent successfully.</p>
+  </div>
+</section>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Збираємо дані форми
+  const formData = new FormData(this);
+  const formObject = {};
+  formData.forEach((value, key) => formObject[key] = value);
+  
+  // Формуємо тіло листа
+  const emailBody = `
+    New Rental Request:
+    Name: ${formObject.name}
+    Email: ${formObject.email}
+    Dates: ${formObject.dates}
+    Route: ${formObject.route}
+    People: ${formObject.people}
+    Experience: ${formObject.experience}
+    Comments: ${formObject.comments}
+  `;
+  
+  // Відправляємо через mailto з підтвердженням
+  const mailtoLink = `mailto:tersprin@gmail.com?subject=New Rental Request from ${encodeURIComponent(formObject.name)}&body=${encodeURIComponent(emailBody)}`;
+  
+  // Відкриваємо посилання в новому вікні
+  const mailWindow = window.open(mailtoLink, '_blank');
+  
+  // Показуємо повідомлення про успіх
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  
+  // Закриваємо вікно через 1 секунду (якщо воно відкрилося)
+  setTimeout(() => {
+    if (mailWindow && !mailWindow.closed) {
+      mailWindow.close();
+    }
+  }, 1000);
+  
+  // Очищаємо форму (опційно)
+  this.reset();
+});
+</script>
 
   </div>
 
@@ -337,4 +384,5 @@
     document.getElementById("submitBtn").textContent = t.submitBtn;
   }
 </script>
+
 
