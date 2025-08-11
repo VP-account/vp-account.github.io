@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center; 
+      padding: 50px; 
+      background: #f9f9f9; 
+      color: #333;
+    }
+    h1 { color: #27ae60; }
+    p { font-size: 1.2em; }
+  </style>
+</head>
+<body>
+
+  <h1 id="thankTitle">Thank you for your booking!</h1>
+  <p id="thankText">We have received your request and will contact you soon.</p>
+  <p><a href="index.html">Back to Home</a></p>
+
+<script>
+  const translations = {
+    en: {
+      thankTitle: "Thank you for your booking!",
+      thankText: "We have received your request and will contact you soon.",
+    },
+    es: {
+      thankTitle: "¡Gracias por su reserva!",
+      thankText: "Hemos recibido su solicitud y nos pondremos en contacto con usted pronto.",
+    },
+    fr: {
+      thankTitle: "Merci pour votre réservation !",
+      thankText: "Nous avons reçu votre demande et vous contacterons bientôt.",
+    },
+    pl: {
+      thankTitle: "Dziękujemy za rezerwację!",
+      thankText: "Otrzymaliśmy Twoją prośbę i wkrótce się skontaktujemy.",
+    },
+    uk: {
+      thankTitle: "Дякуємо за ваше бронювання!",
+      thankText: "Ми отримали вашу заявку і незабаром зв’яжемося з вами.",
+    }
+  };
+
+  // Отримуємо мову з localStorage або за замовчуванням 'en'
+  const lang = localStorage.getItem('preferredLang') || 'en';
+  const t = translations[lang] || translations['en'];
+
+  document.getElementById('thankTitle').textContent = t.thankTitle;
+  document.getElementById('thankText').textContent = t.thankText;
+</script>
+
+</body>
+</html>
