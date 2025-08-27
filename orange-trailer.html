@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,6 +17,12 @@
     nav { text-align: center; margin-bottom: 20px; }
     nav button { margin: 0 5px; padding: 8px 12px; cursor: pointer; }
     a.home-link { color: #27ae60; text-decoration: none; font-weight: bold; }
+    form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+    form input, form textarea { padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    form button { padding: 12px; border: none; background: #27ae60; color: white; font-size: 16px; cursor: pointer; border-radius: 6px; }
+    form button:hover { background: #219150; }
+    #formSuccess { display: none; background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 15px; }
+    #formSuccess p { color: #2e7d32; margin: 0; }
   </style>
 </head>
 <body>
@@ -58,36 +64,43 @@
 
     <section class="section">
       <h2 id="specsTitle">Technical specifications</h2>
-      <ul id="specsList">
-        <li>Height: 170 cm</li>
-        <li>Width: 192 cm</li>
-        <li>Length: 350 cm</li>
-        <li>Max weight: 540 kg</li>
-        <li>Wheel: 205/65 R15</li>
-        <li>Max speed: 100 km/h</li>
-      </ul>
+      <ul id="specsList"></ul>
 
       <h2 id="featuresTitle">Features</h2>
-      <ul id="featuresList">
-        <li>AL-KO torsion suspension (max 750 kg), no brake/absorbers, with straight drawbar</li>
-        <li>Body base: waterproof plywood (birch + alder composite)</li>
-        <li>Bottom coating: polyurethane "LINE-X"</li>
-        <li>Ceiling: waterproof polymer membrane</li>
-        <li>Rear storage box, right-side door with sliding window</li>
-        <li>Front support wheel, galvanized steel frame</li>
-        <li>All-season R15 tires on steel rims</li>
-        <li>Plastic fenders with mudguards</li>
-        <li>58 L technical water tank</li>
-        <li>Tinted sliding curtains, wooden headboard-shelf</li>
-        <li>Storage cabinets, LED lighting, control panel</li>
-        <li>Kitchen counter (HPL), stainless sink, shelf organizer</li>
-        <li>8A smart charger, 56Ah battery</li>
-        <li>LED marker lights, 1-burner gas stove, cutting board</li>
-      </ul>
+      <ul id="featuresList"></ul>
+
+      <h2 id="rentalTermsTitle">Rental terms:</h2>
+      <ul id="rentalTerms"></ul>
+
+      <h2 id="pricesTitle">Prices:</h2>
+      <ul id="prices"></ul>
+    </section>
+
+    <section class="section">
+      <h2 id="formTitle">Leave a request</h2>
+      <form id="contactForm" action="https://formsubmit.co/tersprin@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Rental Request from Orange Trailer">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://caravanrent.es/thank-you.html">
+
+        <input type="text" name="Name" placeholder="Your name" required>
+        <input type="email" name="Email" placeholder="Your email" required>
+        <input type="text" name="Dates" placeholder="Desired rental dates" required>
+        <input type="text" name="Route" placeholder="Your planned route" required>
+        <input type="text" name="People" placeholder="How many people will travel?" required>
+        <input type="text" name="Experience" placeholder="Your camper experience" required>
+        <textarea name="Comments" placeholder="Additional information or questions. Which extra options interest you?" rows="4"></textarea>
+        <button type="submit" id="submitBtn">Send</button>
+      </form>
+      
+      <div id="formSuccess">
+        <p>Thank you! Your request has been sent successfully.</p>
+      </div>
     </section>
 
     <p style="text-align:center;">
-      <a href="https://caravanrent.es/" class="home-link">⬅ Back to main site</a>
+      <a href="https://caravanrent.es/" class="home-link">⬅ Mercedes Benz James Cook Westfalia 2006</a>
     </p>
 
   </div>
@@ -125,7 +138,32 @@
         "Kitchen counter (HPL), stainless sink, shelf organizer",
         "8A smart charger, 56Ah battery",
         "LED marker lights, 1-burner gas stove, cutting board"
-      ]
+      ],
+      rentalTermsTitle: "Rental terms:",
+      rentalTerms: [
+        "Minimum rental period — 3 days",
+        "300 km/day included, then 0.25 €/km",
+        "Deposit: 800 €",
+        "Driver: from 25 years + minimum 2 years experience",
+        "Additional options: child seat, bike rack, picnic set"
+      ],
+      pricesTitle: "Prices:",
+      prices: [
+        "August: 140 €/day",
+        "September-October: 120 €/day",
+        "Other months: 100 €/day",
+        "Discounts from 7 days"
+      ],
+      formTitle: "Leave a request",
+      namePlaceholder: "Your name",
+      emailPlaceholder: "Your email",
+      datesPlaceholder: "Desired rental dates",
+      routePlaceholder: "Your planned route",
+      peoplePlaceholder: "How many people will travel?",
+      experiencePlaceholder: "Your camper experience",
+      commentsPlaceholder: "Additional information or questions. Which extra options interest you?",
+      submitBtn: "Send",
+      successMessage: "Thank you! Your request has been sent successfully."
     },
     es: {
       title: "Remolque Orange",
@@ -156,11 +194,36 @@
         "Encimera (HPL), fregadero de acero inoxidable, organizador",
         "Cargador inteligente 8A, batería 56Ah",
         "Luces LED, hornillo de gas de 1 fuego, tabla de cortar"
-      ]
+      ],
+      rentalTermsTitle: "Condiciones de alquiler:",
+      rentalTerms: [
+        "Periodo mínimo de alquiler — 3 días",
+        "300 km/día incluidos, después 0,25 €/km",
+        "Depósito: 800 €",
+        "Conductor: desde 25 años + mínimo 2 años de experiencia",
+        "Opciones adicionales: asiento infantil, portabicicletas, set de picnic"
+      ],
+      pricesTitle: "Precios:",
+      prices: [
+        "Agosto: 140 €/día",
+        "Septiembre-Octubre: 120 €/día",
+        "Otros meses: 100 €/día",
+        "Descuentos a partir de 7 días"
+      ],
+      formTitle: "Deja una solicitud",
+      namePlaceholder: "Tu nombre",
+      emailPlaceholder: "Tu email",
+      datesPlaceholder: "Fechas deseadas de alquiler",
+      routePlaceholder: "Tu ruta prevista",
+      peoplePlaceholder: "¿Cuántas personas viajarán?",
+      experiencePlaceholder: "Tu experiencia con campers",
+      commentsPlaceholder: "Información adicional o preguntas. ¿Qué opciones extra te interesan?",
+      submitBtn: "Enviar",
+      successMessage: "¡Gracias! Tu solicitud ha sido enviada correctamente."
     },
     fr: {
       title: "Remorque Orange",
-      subtitle: "Caravane compacte pour l’aventure",
+      subtitle: "Caravane compacte pour l'aventure",
       galleryTitle: "Galerie de photos",
       specsTitle: "Spécifications techniques",
       specsList: [
@@ -181,13 +244,38 @@
         "Roue de support avant, cadre galvanisé",
         "Pneus toutes saisons R15 sur jantes en acier",
         "Garde-boue plastiques avec bavettes",
-        "Réservoir d’eau technique 58 L",
+        "Réservoir d'eau technique 58 L",
         "Rideaux coulissants teintés, étagère tête de lit en bois",
         "Placards, éclairage LED, panneau de contrôle",
         "Plan de travail (HPL), évier inox, organiseur",
         "Chargeur intelligent 8A, batterie 56Ah",
         "Feux LED, réchaud 1 feu, planche à découper"
-      ]
+      ],
+      rentalTermsTitle: "Conditions de location :",
+      rentalTerms: [
+        "Durée minimale de location — 3 jours",
+        "300 km/jour inclus, puis 0,25 €/km",
+        "Caution : 800 €",
+        "Conducteur : à partir de 25 ans + minimum 2 ans d'expérience",
+        "Options supplémentaires : siège enfant, porte-vélos, set pique-nique"
+      ],
+      pricesTitle: "Tarifs :",
+      prices: [
+        "Août : 140 €/jour",
+        "Septembre-Octobre : 120 €/jour",
+        "Autres mois : 100 €/jour",
+        "Réductions à partir de 7 jours"
+      ],
+      formTitle: "Laissez une demande",
+      namePlaceholder: "Votre nom",
+      emailPlaceholder: "Votre email",
+      datesPlaceholder: "Dates de location souhaitées",
+      routePlaceholder: "Votre itinéraire prévu",
+      peoplePlaceholder: "Combien de personnes voyageront ?",
+      experiencePlaceholder: "Votre expérience avec les campers",
+      commentsPlaceholder: "Informations ou questions supplémentaires. Quelles options supplémentaires vous intéressent ?",
+      submitBtn: "Envoyer",
+      successMessage: "Merci ! Votre demande a été envoyée avec succès."
     },
     pl: {
       title: "Przyczepa Orange",
@@ -211,14 +299,39 @@
         "Tylny bagażnik, prawe drzwi boczne z oknem przesuwnym",
         "Koło podporowe przednie, rama ocynkowana",
         "Opony całoroczne R15 na stalowych felgach",
-        "Plastikowe błotniki z chlapaczami",
+        "Plastikowe błotniki z chlapaczam",
         "Zbiornik na wodę techniczną 58 L",
         "Przyciemniane zasłony przesuwne, drewniana półka",
         "Szafki, oświetlenie LED, panel sterowania",
         "Blat kuchenny (HPL), zlew ze stali, organizer",
         "Ładowarka 8A, akumulator 56Ah",
         "Światła LED, kuchenka gazowa 1-palnikowa, deska do krojenia"
-      ]
+      ],
+      rentalTermsTitle: "Warunki wynajmu:",
+      rentalTerms: [
+        "Minimalny okres wynajmu — 3 dni",
+        "300 km/dzień w cenie, potem 0,25 €/km",
+        "Kaucja: 800 €",
+        "Kierowca: od 25 lat + minimum 2 lata doświadczenia",
+        "Dodatkowe opcje: fotelik dziecięcy, bagażnik rowerowy, zestaw piknikowy"
+      ],
+      pricesTitle: "Ceny:",
+      prices: [
+        "Sierpień: 140 €/dzień",
+        "Wrzesień-Październik: 120 €/dzień",
+        "Pozostałe miesiące: 100 €/dzień",
+        "Zniżki od 7 dni"
+      ],
+      formTitle: "Złóż zapytanie",
+      namePlaceholder: "Twoje imię",
+      emailPlaceholder: "Twój email",
+      datesPlaceholder: "Preferowane daty wynajmu",
+      routePlaceholder: "Twoja planowana trasa",
+      peoplePlaceholder: "Ile osób będzie podróżować?",
+      experiencePlaceholder: "Twoje doświadczenie z kamperami",
+      commentsPlaceholder: "Dodatkowe informacje lub pytania. Jakie dodatkowe opcje Cię interesują?",
+      submitBtn: "Wyślij",
+      successMessage: "Dziękujemy! Twoje zapytanie zostało wysłane pomyślnie."
     },
     uk: {
       title: "Помаранчевий причіп",
@@ -244,12 +357,37 @@
         "Всесезонні шини R15 на сталевих дисках",
         "Пластикові крила з бризковиками",
         "58 л бак для технічної води",
-        "Тоновані штори, дерев’яна полиця-узголів’я",
+        "Тоновані штори, дерев'яна полиця-узголів'я",
         "Шафи для зберігання, світлодіодне освітлення, панель керування",
         "Кухонна стільниця (HPL), раковина з нержавійки, органайзер",
         "Розумний зарядний пристрій 8A, акумулятор 56Ah",
         "Світлодіодні габарити, одноконфоркова газова плита, обробна дошка"
-      ]
+      ],
+      rentalTermsTitle: "Умови оренди:",
+      rentalTerms: [
+        "Мінімальний термін оренди — 3 дні",
+        "300 км/день включено, далі 0,25 €/км",
+        "Застава: 800 €",
+        "Водій: від 25 років + мінімум 2 роки досвіду",
+        "Додаткові опції: дитяче крісло, велотримач, пікнік-набір"
+      ],
+      pricesTitle: "Ціни:",
+      prices: [
+        "Серпень: 140 €/день",
+        "Вересень-Жовтень: 120 €/день",
+        "Інші місяці: 100 €/день",
+        "Знижки від 7 днів"
+      ],
+      formTitle: "Залишити заявку",
+      namePlaceholder: "Ваше ім'я",
+      emailPlaceholder: "Ваш Email",
+      datesPlaceholder: "Бажані дати оренди",
+      routePlaceholder: "Ваш орієнтовний маршрут",
+      peoplePlaceholder: "Скільки людей подорожуватимуть?",
+      experiencePlaceholder: "Ваш досвід з подорожами в кемпері",
+      commentsPlaceholder: "Додаткова інформація або питання. Які додаткові опції Вас цікавлять?",
+      submitBtn: "Надіслати",
+      successMessage: "Дякуємо! Ваша заявка успішно відправлена."
     }
   };
 
@@ -259,14 +397,57 @@
     document.getElementById("subtitle").textContent = t.subtitle;
     document.getElementById("galleryTitle").textContent = t.galleryTitle;
     document.getElementById("specsTitle").textContent = t.specsTitle;
+    
     const specs = document.getElementById("specsList");
     specs.innerHTML = "";
     t.specsList.forEach(i => { let li=document.createElement("li"); li.textContent=i; specs.appendChild(li); });
+    
     document.getElementById("featuresTitle").textContent = t.featuresTitle;
     const features = document.getElementById("featuresList");
     features.innerHTML = "";
     t.featuresList.forEach(i => { let li=document.createElement("li"); li.textContent=i; features.appendChild(li); });
+  
+    document.getElementById("rentalTermsTitle").textContent = t.rentalTermsTitle;
+    const rt = document.getElementById("rentalTerms"); 
+    rt.innerHTML = "";
+    t.rentalTerms.forEach(i => { let li=document.createElement("li"); li.textContent=i; rt.appendChild(li); });
+
+    document.getElementById("pricesTitle").textContent = t.pricesTitle;
+    const pr = document.getElementById("prices"); 
+    pr.innerHTML = "";
+    t.prices.forEach(i => { let li=document.createElement("li"); li.textContent=i; pr.appendChild(li); });
+
+    document.getElementById("formTitle").textContent = t.formTitle;
+    
+    // Оновлення плейсхолдерів форми
+    const form = document.getElementById("contactForm");
+    form.querySelector('[name="Name"]').placeholder = t.namePlaceholder;
+    form.querySelector('[name="Email"]').placeholder = t.emailPlaceholder;
+    form.querySelector('[name="Dates"]').placeholder = t.datesPlaceholder;
+    form.querySelector('[name="Route"]').placeholder = t.routePlaceholder;
+    form.querySelector('[name="People"]').placeholder = t.peoplePlaceholder;
+    form.querySelector('[name="Experience"]').placeholder = t.experiencePlaceholder;
+    form.querySelector('[name="Comments"]').placeholder = t.commentsPlaceholder;
+    document.getElementById("submitBtn").textContent = t.submitBtn;
+    
+    // Оновлення повідомлення про успіх
+    document.querySelector("#formSuccess p").textContent = t.successMessage;
   }
+
+  // Обробка відправки форми
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Показуємо повідомлення про успіх
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    
+    // Відправляємо форму через Formsubmit
+    this.submit();
+  });
+
+  // Встановлюємо англійську мову за замовчуванням
+  updateLanguage("en");
 </script>
 
 </body>
